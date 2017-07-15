@@ -79,7 +79,7 @@ Waterfallsflow.prototype = {
     //计算
     for(var i=first;i<_len;i++){
       //第几列
-      var _index = Math.floor(i%_levelNum);
+      var _index = i;
 
       if(i >= _levelNum){
         _index = this.getMin(this.arrTop);
