@@ -1,0 +1,13 @@
+.waterfallsflow{
+	padding:0 20px;box-sizing:border-box;width: 100%;min-height: 998px;
+	&_wrap{
+		position: relative;width: 100%;
+	}
+	&_list{
+		position: absolute;
+		img{
+			width: 100%;display: block;
+		}
+
+	}
+}

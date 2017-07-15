@@ -1,0 +1,15 @@
+.waterfallsflow {
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 998px; }
+  .waterfallsflow_wrap {
+    position: relative;
+    width: 100%; }
+  .waterfallsflow_list {
+    position: absolute; }
+    .waterfallsflow_list img {
+      width: 100%;
+      display: block; }
+
+/*# sourceMappingURL=waterfallsflow.css.map */

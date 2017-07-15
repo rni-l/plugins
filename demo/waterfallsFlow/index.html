@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="waterfallsflow.css">
+</head>
+<body>
+	<div class="btn" style='position:fixed;top:10px;left:30px;width:50px;height:50px;z-index: 99;background:black;'></div>
+	<div class="waterfallsflow">
+		<div class="waterfallsflow_wrap"></div>
+	</div>
+	<script src='../js/jquery-1.11.1.min.js'></script>
+	<script src='waterfallsflow.js'></script>
+	<script>
+			$(function(){
+				var _o = null,
+					num = 1
+
+				$.extend({Waterfallsflow:Waterfallsflow})
+				getData({
+					call:function(_data,str){
+						$('.waterfallsflow_wrap').html(str);
+						/*
+							参数：
+							levelNum,mW,mH,
+						*/
+						_o = new $.Waterfallsflow({
+							box:'.waterfallsflow',
+							aList:'.waterfallsflow_list',
+							media:{
+								1024:{
+									levelNum:4,
+									mW:15,
+									mH:15
+								},768:{
+									levelNum:2,
+									mW:10,
+									mH:10
+								},480:{
+									levelNum:1,
+									mW:0,
+									mH:10
+								}
+							}
+						})
+						_o.init();
+						$(window).on('resize',function(){
+							_o.resize();
+						})
+					}
+				})
+
+				$('.btn').on('click',function(){
+					getData({
+						num:++num,
+						call:function(_data,str){
+							$('.waterfallsflow_wrap').append(str);
+							_o.update(_data.length);
+						}
+					})
+				})
+				function getData(params){
+					$.get('http://www.rni-l.com/plugins/api/getPic.php',{num:params.num},function(res){
+						var _data = JSON.parse(res).data,
+							str = '';
+						for(var i=0,len=_data.length;i<len;i++){
+							str += '<div class="waterfallsflow_list"><img src="'+_data[i]+'" ></div>'
+						}
+						params.call(_data,str);
+						
+					})
+				}
+
+			})
+
+
+	</script>
+</body>
+</html>
