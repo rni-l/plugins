@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	<title>fullpage</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="fullpage.css">
+	<style>
+		.home_prevBtn,.home_nextBtn{
+			position: absolute;bottom: 50px;left: 50%;
+			width: 50px;height: 50px;margin-left: -25px;background: black;z-index: 10;
+		}
+	</style>
+</head>
+<body>
+	<div class="fullpage">
+		<div class="fullpage_wrap">
+			<div class="fullpage_section">
+				<div class="home_nextBtn"></div>
+			</div>
+			<div class="fullpage_section"></div>
+			<div class="fullpage_section">
+				<div class="home_nextBtn"></div>
+			</div>
+			<div class="fullpage_section"><div class="home_prevBtn"></div></div>
+			<div class="fullpage_section"></div>
+		</div>
+		<div class="fullpage_paging">
+		</div>
+	</div>
+	<script src='fullpage.js'></script>
+	<script>
+			new fullpage({
+        oMain:'.fullpage',
+        speed:20,//帧速度
+        touchDis:30,//移动距离
+        activeclass:'on',
+        oNext:Array.prototype.slice.call(document.querySelectorAll('.home_nextBtn')),
+        oPrev:Array.prototype.slice.call(document.querySelectorAll('.home_prevBtn'))
+       }).init()
+	</script>
+</body>
+</html>
