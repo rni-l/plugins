@@ -53,7 +53,6 @@ Waterfallsflow.prototype = {
     this.listWidth = (this.boxW - (_levelNum - 1 ) * _mW ) / _levelNum;
     var _w = this.listWidth;
     this.aList.css('width',_w);
-    //this.oBox.width(_levelNum*(_w + _mW) - _mW);
     //初始化
     this.arrLeft = [];
     this.arrTop = [];
@@ -128,7 +127,7 @@ Waterfallsflow.prototype = {
   	var _this = this,
   		range = this.updateLength > 0 ? this.length - this.updateLength - 1 : 0;
   	//如果有新加入的，就只判断新加入的
-    this.$img = $('.waterfallsflow_wrap img:gt('+ range +')',this.oBox)
+    this.$img = Array.prototype.slice.call($('.waterfallsflow_wrap img:gt('+ range +')',this.oBox));
     if(this.updateLength > 0){
     	$('.waterfallsflow_list:gt('+ range +')',this.oBox).width(this.listWidth)
     }
@@ -144,16 +143,19 @@ Waterfallsflow.prototype = {
   checkWidth:function(callback){
     var _this = this,
       isLoadNumber = this.$img.length;
-    this.$img.each(function(i){
-      if($(this).height() > 0){
+    for(var i=0,len=this.$img.length;i<len;i++){
+      var _img = this.$img[i];
+      //获取到图片的高度，长度--
+      if(_img.height > 0){
         isLoadNumber--;
       }
       if(isLoadNumber <= 0){
         //所有图片加载完毕，计算距离
         callback();
-        _this.isOk = true;
+        this.isOk = true;
       }
-    })
+    }
+    //循环完毕，生成位置
     this.setPic();
   },
   //新加入数据，触发
