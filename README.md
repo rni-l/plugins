@@ -2,6 +2,10 @@
 
 > 主要是把自己做过的效果，归纳一下，并写成一个小插件，方便使用。PS:部分插件依赖jquery。
 
+## 模板
+
+* [移动端 vue 模板（基于 vue-cli 进行修改）](#mobileVueTemplate)
+
 ## 插件清单
 
 * [瀑布流](#waterfall)
@@ -11,6 +15,16 @@
  ---
 
 ## 文档说明
+
+<h3 id='mobileVueTemplate'>移动端 vue 模板</h3>
+
+> 在公司工作了4个月，对移动端的模板进行了修改
+
+模板是基于 vue-cli，然后添加一些统一处理的方案
+
+这些在模板文件的说明文档有了，这里不展开
+
+![模板文档](https://github.com/yiiouo/plugins/blob/master/template/mobile-vue-template/document.md3)
 
 <h3 id='waterfall'>瀑布流</h3>
 
