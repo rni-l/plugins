@@ -24,7 +24,7 @@
 
 这些在模板文件的说明文档有了，这里不展开
 
-![模板文档](https://github.com/yiiouo/plugins/blob/master/template/mobile-vue-template/document.md3)
+[模板文档](https://github.com/yiiouo/plugins/blob/master/template/mobile-vue-template/README.md)
 
 <h3 id='waterfall'>瀑布流</h3>
 
