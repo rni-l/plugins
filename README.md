@@ -5,6 +5,7 @@
 ## 模板
 
 * [移动端 vue 模板（基于 vue-cli 进行修改）](#mobileVueTemplate)
+* [多页面 ssr 模板](#pagesSsrTemplate)
 
 ## 插件清单
 
@@ -25,6 +26,13 @@
 这些在模板文件的说明文档有了，这里不展开
 
 [模板文档](https://github.com/yiiouo/plugins/blob/master/template/mobile-vue-template/README.md)
+
+
+<h3 id='pagesSsrTemplate'>多页面 ssr 模板</h3>
+
+同上。。。
+
+[模板文档](https://github.com/yiiouo/plugins/blob/master/template/pages-ssr-template/README.md)
 
 <h3 id='waterfall'>瀑布流</h3>
 

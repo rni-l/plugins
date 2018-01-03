@@ -1,0 +1,15 @@
+# Logs
+*.log
+npm-debug.log*
+test.js
+config.js
+
+# db
+db.json
+
+# Gulp
+public/dist
+public/img
+
+# Admin
+public/admin
