@@ -6,6 +6,7 @@
 
 * [移动端 vue 模板（基于 vue-cli 进行修改）](#mobileVueTemplate)
 * [多页面 ssr 模板](#pagesSsrTemplate)
+* [管理后台 ssr 模板](#adminTemplate)
 
 ## 插件清单
 
@@ -29,6 +30,8 @@
 
 
 <h3 id='pagesSsrTemplate'>多页面 ssr 模板</h3>
+
+<h3 id='adminTemplate'>管理后台 ssr 模板</h3>
 
 同上。。。
 

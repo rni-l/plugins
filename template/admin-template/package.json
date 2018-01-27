@@ -1,7 +1,7 @@
 {
-  "name": "spiderMan-lu",
-  "version": "2.1.0",
-  "description": "wili admin templation",
+  "name": "admin-template",
+  "version": "1.0.0",
+  "description": "admin templation",
   "author": "yiiouo <15625979610@163.com>",
   "private": true,
   "scripts": {

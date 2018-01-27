@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const oPrivate = require('./../private-config')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -37,7 +38,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
-          warnings: false
+          warnings: false,
+          drop_debugger: !!!oPrivate.showConsoleLog, // 是否显示 debugger 和 console log
+          drop_console: !!!oPrivate.showConsoleLog
         }
       },
       sourceMap: config.build.productionSourceMap,

@@ -64,9 +64,6 @@ module.exports = {
         },
         onProxyRes(proxyRes, req, res) {
           if (proxyRes.headers['set-cookie'] instanceof Array && proxyRes.headers['set-cookie'].length > 0) {
-            // 取出 JAVA SESSION 更改 PATH
-            // 'set-cookie': [ 'SESSION=d5a2d288-61b6-453b-935d-8e1cd4b9ede0; Path=/admin/; HttpOnly' ]
-            // 'set-cookie': [ 'SESSION=d5a2d288-61b6-453b-935d-8e1cd4b9ede0; Path=/; HttpOnly' ]
             var [ session, value ] = proxyRes.headers['set-cookie'][0].split(';')[0].split('=')
             proxyRes.headers['set-cookie'] = [`${session}=${value}; Path=/; HttpOnly`]
           }
@@ -75,8 +72,9 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: oPrivate.dev.port, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    public: oPrivate.dev.ngrokUrl || '', // ngrok 域名，修复无法热更新问题
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

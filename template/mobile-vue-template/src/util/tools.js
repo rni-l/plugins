@@ -1,4 +1,4 @@
-// 辅助通用方法
+// 通用方法
 export default {
   regexp: {
     phone: /^1[34578]{1}\d{9}$/,
@@ -33,7 +33,7 @@ export default {
     const ua = window.navigator.userAgent
     return /Android/i.test(ua)
   },
-  /*
+  /**
    * date * 时间对象
    * options * 配置参数
      * dayDelimiter String, * 年月日分隔符，默认 -
@@ -54,7 +54,7 @@ export default {
     }
     return str
   },
-  /*
+  /**
    * 动态加载 js 文件
    * opts: {} 配置参数
      * obj String, * 加载 js 文件后的 全局对象 必填

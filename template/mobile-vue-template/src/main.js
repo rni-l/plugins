@@ -1,16 +1,24 @@
 import 'es6-promise/auto'
-import 'lib-flexible'
+import App from '@/app.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Mint from 'mint-ui'
 // import _ from 'lodash'
-import App from '@/app.vue'
+
+// 库、sdk
 import api from '@/api/api'
 import router from '@/router'
 import request from '@/util/request'
 import tools from '@/util/tools'
 import WechatPlugin from '@/util/wechat'
-import store from '@/store/index'
+// vuex
+// import store from '@/store/index'
+import vueFilter from '@/filter/index'
+import vueDirective from '@/directive/index'
+import vconsole from 'vconsole'
+
+// css
+import 'lib-flexible'
 import 'mint-ui/lib/style.css'
 import 'nprogress/nprogress.css'
 import '@/assets/iconfont/iconfont.css'
@@ -18,11 +26,14 @@ import '@/assets/iconfont/iconfont.css'
 // 传入 vuex
 Vue.prototype.$request = request
 
-Vue.prototype.$tools = tools
+window.$tools = tools
 
 // window._ = _
 
 Vue.prototype.$api = api
+
+/* eslint-disable no-new,new-cap */
+new vconsole()
 
 // 阻止页面记住滚动
 // 在 iphone 上使用，会出现左滑卡顿问题
@@ -38,9 +49,19 @@ Vue.prototype.$api = api
 // 添加Fastclick移除移动端点击延迟
 // FastClick.attach(document.body)
 
-Vue.use(Mint)
+// 微信 sdk
 Vue.use(WechatPlugin)
+// vue 组件/工具
+Vue.use(Mint)
 Vue.use(VueRouter)
+// 添加 filter
+vueFilter.forEach(v => {
+  Vue.filter(v.name, v.func)
+})
+// 添加 directive
+vueDirective.forEach(v => {
+  Vue.directive(v.name, v.func)
+})
 
 Vue.config.productionTip = false
 
@@ -75,9 +96,6 @@ router.beforeEach(async (to, from, next) => {
   // if (to.path.indexOf('/error') !== -1) {
   //   return next()
   // }
-
-  // 建议使用 vuex 进行登录状态的判断
-  // store.status.loginStatus ....
 
   // if (init) {
   //   // 第一次验证登录状态
@@ -126,7 +144,7 @@ router.beforeEach(async (to, from, next) => {
 new Vue({
   el: '#app',
   router,
-  store,
+  // store,
   template: '<App/>',
   components: { App }
 })

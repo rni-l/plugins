@@ -1,7 +1,7 @@
 {
-  "name": "batman",
+  "name": "mobile-template",
   "version": "2.0.0",
-  "description": "wili wechat templation",
+  "description": "wechat templation",
   "author": "yiiouo <15625979610@163.com>",
   "private": true,
   "scripts": {
@@ -48,7 +48,6 @@
     "css-loader": "^0.28.0",
     "es6-promise": "^4.2.2",
     "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-import-resolver-webpack": "^0.8.3",
@@ -97,7 +96,7 @@
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
-    "vconsole-webpack-plugin": "^1.1.2",
+    "vconsole": "^3.1.0",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",

@@ -2,7 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 import NProgress from 'nprogress'
 import router from '@/router'
-import store from '@/store/index'
+// import store from '@/store/index'
 import { Toast, MessageBox } from 'mint-ui'
 import config2 from '../../private-config'
 
@@ -58,11 +58,11 @@ function checkStatus(response) {
 
 // 处理来自后端的错误
 function checkCode(res, type) {
-  if (type !== 'notDeal') {
+  if (type !== 'noProcssing') {
     // 需要处理
     if (res.code === 506) {
       Toast('请重新登录')
-      store.commit('updateTest', 123)
+      // store.commit('updateTest', 123)
       router.replace({ name: 'login' })
     } else if (res.code !== 200) {
       // 默认 toast 显示错误信息
@@ -76,6 +76,15 @@ function checkCode(res, type) {
   }
   return res
 }
+
+/**
+ * 封装好的 post 和 get 方法
+ * @params {Object} opts  -- 配置参数
+ * @params {String} opts.url -- 请求路径
+ * @params {String} opts.errType -- 处理错误方式
+ * @params {Object} data  -- 请求所带的参数
+ * @returns {Promise} -- 返回一个 promose 对象
+ */
 
 export default {
   post(opts, data) {
