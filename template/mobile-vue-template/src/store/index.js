@@ -9,11 +9,23 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state: {
-    test: 1
+    isLogin: false,
+    isRequestError: false,
+    test: 1,
+    environment: ''
   },
   mutations: {
     updateTest(state, value) {
       state.test = value
+    },
+    updateLogin(state, value) {
+      state.isLogin = value
+    },
+    updateRequestError(state, value) {
+      state.isRequestError = value
+    },
+    updateEnvironment(state, value) {
+      state.environment = value
     }
   },
   modules: {

@@ -21,10 +21,10 @@ function dealOpts(url, opts) {
  * @params {Object} opts  -- 配置参数(可选)
  */
 
-const getCaptcha = (params, opts) => {
-  return request.get(dealOpts('/admin/api/adminUser/checkLogin', opts), params)
+const userCheckLogin = (params, opts) => {
+  return request.get(dealOpts('/api/user/checkLogin', opts), params)
 }
 
 export default {
-  getCaptcha
+  userCheckLogin
 }

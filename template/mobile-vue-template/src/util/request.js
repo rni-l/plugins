@@ -1,8 +1,8 @@
 import axios from 'axios'
 import qs from 'qs'
 import NProgress from 'nprogress'
-import router from '@/router'
-// import store from '@/store/index'
+import router from '@/router/index'
+import store from '@/store/index'
 import { Toast, MessageBox } from 'mint-ui'
 import config2 from '../../private-config'
 
@@ -31,13 +31,15 @@ axios.interceptors.response.use(response => response, error => {
 
 function checkStatus(response) {
   NProgress.done()
+  if (!response) {
+    store.commit('updateIsRequestError', true)
+    return {
+      code: 50001,
+      data: '网络连接超时'
+    }
+  }
   // 如果 http 状态码正常, 则直接返回数据
   if (response.status === 200 || response.status === 304) {
-    // 这里, 如果不需要除 data 外的其他数据, 可以直接 return response.data, 这样可以让后面的代码精简一些
-    // return {
-    //   code: response.data.status.errCode,
-    //   data: response.data.data
-    // }
     if (response.data.status.errCode === 200) {
       return {
         code: response.data.status.errCode,
@@ -62,7 +64,6 @@ function checkCode(res, type) {
     // 需要处理
     if (res.code === 506) {
       Toast('请重新登录')
-      // store.commit('updateTest', 123)
       router.replace({ name: 'login' })
     } else if (res.code !== 200) {
       // 默认 toast 显示错误信息

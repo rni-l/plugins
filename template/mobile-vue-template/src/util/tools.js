@@ -14,7 +14,7 @@ export default {
     ip: /(\d+)\.(\d+)\.(\d+)\.(\d+)/ // ip地址
   },
   // 检查微信环境
-  checkIfWechat() {
+  checkWechat() {
     const ua = window.navigator.userAgent
     return /MicroMessenger/.test(ua)
   },
@@ -24,12 +24,12 @@ export default {
     return /AlipayDefined/.test(ua)
   },
   // 检查 ios 环境
-  checkIfIos() {
+  checkIos() {
     const ua = window.navigator.userAgent
     return /\(i[^;]+;( U;)? CPU.+Mac OS X/.test(ua)
   },
   // 检查 android 环境
-  checkIfAndroid() {
+  checkAndroid() {
     const ua = window.navigator.userAgent
     return /Android/i.test(ua)
   },
