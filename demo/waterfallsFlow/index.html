@@ -55,21 +55,19 @@
 				$('.btn').on('click',function(){
 					getData({
 						num:++num,
-						call:function(_data,str){
+						call:function(length,str){
 							$('.waterfallsflow_wrap').append(str);
-							_o.update(_data.length);
+							_o.update(length);
 						}
 					})
 				})
 				function getData(params){
-					$.get('http://www.rni-l.com/plugins/api/getPic.php',{num:params.num},function(res){
-						var _data = JSON.parse(res).data,
-							str = '';
-						for(var i=0,len=_data.length;i<len;i++){
-							str += '<div class="waterfallsflow_list"><img src="'+_data[i]+'" ></div>'
+						var length = 15,
+						  str = '';
+						for(var i=0, len=length; i < len; i++){
+							str += '<div class="waterfallsflow_list"><img src="./../images/pic' + (i % 10) + '.jpg" ></div>'
 						}
-						params.call(_data,str);
-						
+						params.call(length, str);
 					})
 				}
 
