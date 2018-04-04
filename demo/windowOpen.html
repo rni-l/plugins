@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    *{margin: 0;}
+    .box{
+      padding: 20px 40px;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      min-width: 980px;
+      font-size:  14px;
+      line-height: 1.5;
+    }
+    .info{
+      color:  #642A2A;padding-bottom: 20px;font-size: 18px;
+    }
+    .list{
+      margin-bottom: 20px;
+    }
+    .title{
+      font-size: 16px;
+    }
+    .desc{
+      color: #A1A1A1;cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="info">提示：</div>
+    <div class="list">
+      <div class="title">window.open（会被拦截）:</div>
+      <div class="desc test1">点击我，触发打开窗口</div>
+    </div>
+    <div class="list">
+      <div class="title">window.open（不会被拦截）:</div>
+      <div class="desc test2">点击我，触发打开窗口</div>
+    </div>
+    <div class="list">
+      <div class="title">a 标签（会被拦截）:</div>
+      <div class="desc test3">点击我，触发打开窗口</div>
+    </div>
+    <div class="list">
+      <form action="http://www.rni-l.com" method='GET' target='_blank'>
+        <div class="title">form 提交（会被拦截）:</div>
+        <div class="desc test4">点击我，触发打开窗口</div>
+      </form>
+    </div>
+  </div>
+  <script>
+    window.onload = function() {
+      function info(msg) {
+        document.querySelector('.info').innerHTML = '提示：' + msg
+      }
+      function open1() {
+        info('处理中')
+        setTimeout(() => {
+          window.open()
+          info('被拦截了')
+        }, 1100)
+      }
+      function open2() {
+        info('处理中')
+        var a = window.open()
+        setTimeout(() => {
+          a.location = 'http://www.rni-l.com'
+          info('弹出')
+        }, 1100)
+      }
+      function open3() {
+        info('处理中')
+        var a = document.createElement('a')
+        a.href = 'http://www.rni-l.com'
+        a.target = '_blank'
+        var name = new Date().getTime()
+        a.id = name
+        document.body.append(a)
+        setTimeout(() => {
+          document.getElementById(('' + name)).click()
+          info('被拦截了')
+        }, 1100)
+      }
+      function open4() {
+        info('处理中')
+        setTimeout(() => {
+          document.querySelector('form').submit()
+          info('被拦截')
+        }, 1100)
+      }
+      document.querySelector('.test1').addEventListener('click', open1, false)
+      document.querySelector('.test2').addEventListener('click', open2, false)
+      document.querySelector('.test3').addEventListener('click', open3, false)
+      document.querySelector('.test4').addEventListener('click', open4, false)
+    }
+  </script>
+</body>
+</html>
