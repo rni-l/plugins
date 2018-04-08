@@ -5,22 +5,34 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const pkg = require('./package.json')
 const rootPath = path.resolve(__dirname)
 const pluginName = pkg.pluginName
 const ENV = process.env.NODE_ENV
 const isDevelopment = ENV === 'development'
 
-console.log('isDevelopment:', isDevelopment);
+console.log('isDevelopment:', isDevelopment, ENV)
+
+const defaultPlugin = [
+  new HtmlWebpackPlugin({
+    title: 'Development',
+    template: './index.html'
+  })
+]
 
 const config = {
-  mode: ENV,
+  mode: isDevelopment ? 'development' : 'production',
 
   entry: {
     app: path.resolve(rootPath, 'src', 'index.js')
   },
 
-  devServer: {},
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+    inline: true
+  },
 
   output: {
     filename: `${pluginName}.js`,
@@ -56,14 +68,14 @@ const config = {
           { loader: 'sass-loader' }
         ] : ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader' ]
+          use: ['css-loader', 'sass-loader']
         })
       }
     ]
   },
 
-  plugins: isDevelopment ? 
-    [] : 
+  plugins: [].concat(isDevelopment ?
+    defaultPlugin :
     [
       new UglifyJsPlugin({
         uglifyOptions: {
@@ -71,26 +83,7 @@ const config = {
         }
       }),
       new ExtractTextPlugin("styles.css")
-   ]
+    ])
 }
 
-new Promise(() => {
-  // 构建全量压缩包
-  let building = ora('building...')
-  building.start()
-  rm(path.resolve(rootPath, 'dist'), err => {
-    if (err) throw (err)
-    webpack(config, function (err, stats) {
-      if (err) throw (err)
-      building.stop()
-      process.stdout.write(stats.toString({
-        colors: true,
-        modules: false,
-        children: false,
-        chunks: false,
-        chunkModules: false
-      }) + '\n\n')
-      console.log(chalk.cyan('  Build complete.\n'))
-    })
-  })
-})
+module.exports = config
