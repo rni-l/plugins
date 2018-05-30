@@ -1,0 +1,84 @@
+@import './../variable.scss';
+
+.m-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 114px 0 50px;
+
+  // 滚动栏
+  $picW: 368px;
+  $leftDis: 66px;
+  .swiper-container {
+    width: $picW + $leftDis;
+    height: $picW;
+    position: relative;
+  }
+  .img {
+    width: $picW;
+    height: $picW;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-left: $leftDis;
+  }
+  .swiper-pagination {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateX(-50%);
+    &-bullet {
+      background: rgba($c-title, 30);
+      width: 10px;
+      height: 10px;
+    }
+    &-bullet, &-bullet {
+      margin-top: 14px !important;
+    }
+  }
+
+  // 右边详细
+  &_right {
+    width: 460px;
+    .title {
+      font-size: 30px;
+      color: $c-title;
+      letter-spacing: .5px;
+    }
+    .price {
+      padding: 30px 0 21px;
+      color: $c-base;
+      span {
+        font-size: 28px;
+      }
+      strong {
+        font-weight: normal;
+        font-size: 36px;
+      }
+    }
+    .desc {
+      font-size: 16px;
+      color: rgba($c-title, .5);
+      line-height: 30px;
+    }
+    .computing {
+      padding: 30px 0 80px;
+      display: flex;
+      align-items: center;
+      .remaining {
+        color: rgba($c-title, .5);
+        font-size: 16px;
+        padding-left: 20px;
+      }
+    }
+    .u-btn {
+      width: 180px;
+    }
+  }
+  &_animationImg {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    display: block;
+  }
+}

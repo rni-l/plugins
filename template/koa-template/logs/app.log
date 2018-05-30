@@ -1,0 +1,10 @@
+[2018-02-28T19:12:13.860] [INFO] http - GET / - 209ms
+[2018-02-28T19:12:13.894] [INFO] http - GET /stylesheets/style.css - 0ms
+[2018-02-28T19:21:24.956] [INFO] http - GET / - 61ms
+[2018-02-28T19:21:53.935] [INFO] http - GET / - 46ms
+[2018-02-28T19:22:58.368] [INFO] http - GET / - 38ms
+[2018-02-28T19:23:24.176] [INFO] http - GET / - 41ms
+[2018-02-28T19:24:06.209] [INFO] http - GET / - 232ms
+[2018-02-28T19:24:06.254] [INFO] http - GET /stylesheets/style.css - 0ms
+[2018-02-28T19:28:20.895] [INFO] http - GET / - 424ms
+[2018-02-28T19:28:20.971] [INFO] http - GET /stylesheets/style.css - 0ms

@@ -1,0 +1,64 @@
+doctype html
+
+html
+  head
+    title #{title} 343434
+    link(rel='stylesheet', href='./assets/font/iconfont.css')
+    link(rel='stylesheet', href='./dist/css/style.css')
+    script(src='./lib/js/jquery.min.js')
+    block scripts
+  body(class=`${isEn ? 'family-en' : 'family-cn'}` isen=`${isEn ? 'en' : 'cn'}`)
+    block outsideBg
+    if welcomeHeader  
+      include components/header.pug
+      block content
+    else
+      .app
+        include components/header.pug
+        block content
+        include components/footer.pug
+    include components/aside.pug
+    block foot
+    script.
+      $(function() {
+        //- 替换中英文按钮
+        var location = window.location
+        var txt = location.search.indexOf('ln=en') > -1 ? '?ln=cn' : '?ln=en'
+        $('.u-header_cart_btn').attr('href', location.origin + location.pathname + txt)
+        //- 购物车功能
+        var $car = $('.u-header_cartBox')
+        var isShow = true
+        var toggle = function() {
+          $car.removeClass(!isShow ? 'show' : 'hide').addClass(isShow ? 'show' : 'hide')
+          isShow = !isShow
+        }
+        $('.u-header_cart_icon').on('click', toggle)
+        $('.u-header_cart_num').on('click', toggle)
+
+        //- aside
+        var $aside = $('.u-aside')
+        var isShowAside = false
+        var toggle = function() {
+          $aside.removeClass(!isShow ? 'show' : 'hide').addClass(isShow ? 'show' : 'hide')
+          isShow = !isShow
+        }
+        $('.u-aside_close').on('click', toggle)
+        $('.u-header_aside').on('click', toggle)
+
+        //- 购物车跳转
+        $('.u-header_cartBox .btn').on('click', function() {
+          window.location.href = $(this).attr('link')
+        })
+
+        //- 微信弹窗
+        var $wehcatBox = $('.u-footer_share_wechatBox')
+        var isShowWechatBox = true
+        $('.u-footer_share .wechat').on('click', function() {
+          if (isShowWechatBox) {
+            $wehcatBox.fadeIn()
+          } else {
+            $wehcatBox.fadeOut()
+          }
+          isShowWechatBox = !isShowWechatBox
+        })
+      })

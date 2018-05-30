@@ -1,0 +1,71 @@
+extends ./../layout.pug
+block content
+  div.m-welcome
+    div(class='m-welcome_wrap')
+      .banners
+      .banners
+      .banners
+      .banners
+    ul.m-welcome_banner
+      li(class='item' type='0')
+      li(class='item' type='1')
+      li(class='item' type='2')
+      li(class='item' type='3')
+    div(class='line line-0')
+    div(class='line line-1')
+    div(class='line line-2')
+    a.m-welcome_btn(href=`${public.link_home}`)
+      p #{btnTxt}
+      img.icon(src='./img/icon/welcome_btnIcon.png')
+
+  script.
+    $(function() {
+      var zindex = 1
+      var prev = 0
+      var $obj = $('.m-welcome_banner')
+      var $banner = $('.m-welcome_wrap')
+      var isAuto = true
+      var timer = {}
+      var mouseoverTimer = {}
+      var max = 3
+      $banner.find('.banners:eq(0)').fadeIn()
+
+      //- 自动轮播
+      var go = function() {
+        timer = setTimeout(function() {
+          if (!isAuto) {
+            return clearTimeout(timer)
+          }
+          var _i = prev + 1
+          if (_i > max) {
+            _i = 0
+          }
+          $banner.find('.banners:eq(' + prev + ')').fadeOut()
+          $banner.find('.banners:eq(' + _i + ')').fadeIn()
+          prev = _i
+          go()
+        }, 3000)
+      }
+
+      go()
+
+      $obj.on('mouseover', function(e) {
+        const target = e.target
+        const type = target.getAttribute('type')
+        var _i = parseInt(type || -1, 10)
+        if (type && _i !== prev) {
+          $banner.find('.banners:eq(' + prev + ')').fadeOut()
+          $banner.find('.banners:eq(' + _i + ')').fadeIn()
+          prev = _i
+          clearTimeout(mouseoverTimer)
+          isAuto = false
+          mouseoverTimer = setTimeout(function() {
+            isAuto = true
+            go()
+          }, 3000)
+        }
+      })
+    })
+block foot
+  script(src='./lib/js/eventBus.js')
+  script(src='./dist/js/welcome.js')

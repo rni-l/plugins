@@ -1,0 +1,71 @@
+@import './../variable.scss';
+
+.u-aside {
+  width: 420px;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999999;
+  transition: all .4s;
+  &_wrap {
+    position: absolute;
+    top: 50%;
+    left: 80px;
+    transform: translateY(-82%);
+    .title {
+      padding-bottom: 60px;
+      color: #333;
+      font-size: 32px;
+    }
+    .list {
+      font-size: 20px;
+      color: #fff;
+    }
+    .item + .item {
+      margin-top: 30px;
+    }
+    .item {
+      padding-left: 32px;
+      display: block;
+      position: relative;
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 2px;
+        width: 12px;
+        background: rgba(#979797, .5);
+      }
+      &:hover {
+        color: $c-base;
+      }
+    }
+  }
+  &_logo {
+    display: block;
+    position: absolute;
+    bottom: 43px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &_close {
+    position: absolute;
+    display: block;
+    top: 30px;
+    right: 30px;
+  }
+  &.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  &.hide {
+    transform: translateX(-430px);
+    opacity: 0;
+  }
+}

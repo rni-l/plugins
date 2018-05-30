@@ -1,0 +1,52 @@
+@import './variable.scss';
+@import './base.scss';
+
+.app {
+  width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 249px;
+  box-sizing: border-box;
+  // FOCUS:
+  // position: relative;
+}
+
+.u-btn {
+  background: $c-base;
+  color: #fff;
+  text-align: center;
+  padding: 12px 0;
+  cursor: pointer;
+  &:hover {
+    color: $c-title;
+  }
+  &.disabled, &:disabled {
+    background: rgba(#d8d8d8, 1);
+    color: #fff;
+    cursor: not-allowed;
+  }
+}
+
+.u-toast {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, -100px);
+  background: $c-title;
+  color: #fff;
+  text-align: center;
+  padding: 5px 25px;
+  transition: all .4s;
+  opacity: 0;
+  white-space: nowrap;
+  z-index: 9999999999;
+  &.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  &.hide {
+    opacity: 0;
+    transform: translate(-50%, -100px);
+  }
+}

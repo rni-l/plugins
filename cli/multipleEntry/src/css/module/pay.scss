@@ -1,0 +1,161 @@
+@import './../variable.scss';
+
+.m-pay {
+  color: $c-title;
+  padding: 40px 0 50px;
+  &_list {
+    padding-bottom: 30px;
+    &_title {
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 22px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+  }
+  // 地址信息
+  &_addressInfo {
+    .item {
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  // 商品列表
+  &_goods {
+    &_item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      &:first-child {
+        padding-top: 30px;
+      }
+    }
+    .img {
+      width: 60px;
+      height: 60px;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-image: url(./../../img/product.png);
+    }
+    &_desc {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex: 1;
+      padding-left: 30px;
+      font-size: 20px;
+      .desc {
+        width: 666px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 20px;
+      }
+      .right {
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+      }
+      .number {}
+    }
+  }
+  // 支付
+  &_payType {
+    .btnWrap {
+      display: flex;
+      padding: 30px 0 20px;
+      .btn {
+        width: 160px;
+        height: 42px;
+        box-sizing: border-box;
+        border: solid 1px $c-border;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $c-title;
+        margin-right: 20px;
+        border-radius: 2px;
+        cursor: default;
+        p {
+          padding-left: 10px;
+        }
+        &.on {
+          border-color: $c-base;
+        }
+      }
+    }
+    .prompt {
+      color: $c-base;
+    }
+    .payPrice {
+      display: flex;
+      font-size: 20px;
+      padding: 30px 0 5px;
+      .desc {
+        padding-right: 5px;
+      }
+    }
+  }
+  &_btn {
+    width: 254px;
+  }
+  // 二维码
+  &_qrcode {
+    display: none;
+    &_cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: rgba(#000, .5);
+      z-index: 99999999;
+    }
+    &_wrap {
+      position: fixed;
+      z-index: 99999999;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border-radius: 8px;
+      width: 300px;
+      height: 360px;
+      overflow: hidden;
+    }
+    &_top {
+      background: #f5f5f5;
+      height: 60px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      color: $c-title;
+      font-size: 18px;
+      align-items: center;
+      .icon {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+      }
+    }
+    &_content {
+      overflow: hidden;
+      .qrcode {
+        width: 180px;
+        height: 180px;
+        margin: 40px auto 20px;
+        display: block;
+      }
+      .desc {
+        color: #888;
+        text-align: center;
+        line-height: 20px;
+        padding: 0 30px;
+      }
+    }
+  }
+}

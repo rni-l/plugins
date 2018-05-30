@@ -1,0 +1,8 @@
+div(class='u-aside hide')
+  .u-aside_wrap
+    .title #{public.asideTitle}
+    .list
+      each val in asideGoodsData
+        a.item(href=`${public.link_detail}&id=${val.id}`) #{(isEn ? val.englishName : val.chineseTraditionalName) || '暂无名称'}
+  img.u-aside_close(src='./img/icon/close.png')
+  img.u-aside_logo(src='./img/icon/aside_logo.png')

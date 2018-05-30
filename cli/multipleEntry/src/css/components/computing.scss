@@ -1,0 +1,23 @@
+@import './../variable.scss';
+
+.u-computing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px $c-title;
+  border-radius: 2px;
+  width: 136px;
+  height: 40px;
+  box-sizing: border-box;
+  .number {
+    font-size: 20px;
+    color: $c-title;
+    padding: 0 30px;
+  }
+  .iconfont {
+    color: #CCCCCC;
+    &:hover {
+      color: $c-base;
+    }
+  }
+}

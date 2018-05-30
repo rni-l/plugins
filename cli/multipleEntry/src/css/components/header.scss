@@ -1,0 +1,197 @@
+@import './../variable.scss';
+
+.u-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  // padding: 0 40px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  position: relative;
+  z-index: 999999;
+  &_aside {
+    &.normal {
+      color: $c-base;
+      &:hover {
+        color: $c-base_hover;
+      }
+    }
+    &.welcome {
+      color: #fff;
+      &:hover {
+        color: $c-base;
+      }
+    }
+  }
+  &_right {
+    display: flex;
+    align-items: center;
+  }
+  &_cart {
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    z-index: 9999999;
+    &_line {
+      width: 1px;
+      height: 11px;
+      background: #fff;
+      margin: 0 20px;
+    }
+    &_num {
+      width: 16px;
+      height: 16px;
+      background: $c-base;
+      color: #fff;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -15px;
+      right: 22px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    &_icon {
+      position: relative;
+      z-index: 1;
+      &.normal {
+        color: #000;
+        &:hover {
+          color: $c-base;
+        }
+      }
+      &.welcome {
+        color: #fff;
+        &:hover {
+          color: $c-base;
+        }
+      }
+    }
+    &_btn {
+      &:hover {
+        color: $c-base;
+      }
+    }
+  }
+  &_welcome {
+    color: #fff;
+    position: absolute;
+    top: 30px;
+    padding: 0 40px;
+    left: 0;
+    z-index: 9999999;
+  }
+  &_normal {
+    color: #000;
+    margin-top: 20px;
+    .u-header {
+      &_cart {
+        &_line {
+          background: rgba(#323232, .2);
+        }
+      }
+    }
+  }
+  &_logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    img {
+      display: block;
+    }
+  }
+  $cartH: 410px;
+  $topH: 40px;
+  $bottomH: 120px;
+  $centerH: $cartH - $topH - $bottomH;
+  // 购物车下拉框
+  &_cartBox {
+    background-color: #fff;
+    border: 1px solid #F1F1F1;
+    box-shadow: 1px 4px 10px 2px rgba(0,0,0,0.10);
+    width: 280px;
+    // height: $cartH;
+    position: absolute;
+    top: 30px;
+    right: 16px;
+    transition: transform 1s ease, opacity 0.4s ease;
+    box-sizing: border-box;
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &.hide {
+      opacity: 0;
+      transform: translateY(-2000px);
+    }
+    .top_bg {
+      background: url(./../../img/icon/cartBox_top.png) no-repeat;
+      width: 278px;
+      margin: 0 auto;
+      height: 19px;
+      position: absolute;
+      top: -19px;
+      left: 0;
+    }
+    .top {
+      text-align: center;
+      color: $c-base;
+      padding: 10px 0;
+    }
+    .center {
+      // height: $centerH;
+      // overflow-y: auto;
+      text-align: left;
+      border-top: 1px solid $c-border;
+      border-bottom: 1px solid $c-border;
+      box-sizing: border-box;
+    }
+    .bottom {
+      padding: 0 13px 20px;
+      .priceBox {
+        padding: 15px 0 20px;
+        color: $c-title;
+      }
+      .btn {
+        cursor: pointer;
+      }
+    }
+    // 产品列表
+    .product-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 12px 37px 17px;
+      &:hover {
+        background: rgba($c-desc, .4);
+        // .right .title {
+        //   color: #fff;
+        // }
+      }
+      .img {
+        background: url(./../../img/product.png) center center no-repeat;
+        background-size: cover;
+        margin-right: 15px;
+        width: 70px;
+        height: 70px;
+      }
+      .right {
+        .title {
+          color: $c-title;
+          font-size: 16px;
+          padding-bottom: 6px;
+        }
+        .line {
+          color: $c-desc;
+          font-size: 12px;
+          display: flex;
+          padding-top: 5px;
+        }
+      }
+    }
+  }
+}

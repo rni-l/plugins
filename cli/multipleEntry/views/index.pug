@@ -1,0 +1,27 @@
+extends ./layout.pug
+block scripts
+block content
+  .m-home
+    .m-home_wrap
+      div(class='banner-box obj')
+        .swiper-container
+          .swiper-wrapper
+            div(class='swiper-slide')
+              div(class='img' style='background-image: url(./img/module/index/1.png)')
+            div(class='swiper-slide')
+              div(class='img' style='background-image: url(./img/module/index/1.png)')
+            div(class='swiper-slide')
+              div(class='img' style='background-image: url(./img/module/index/1.png)')
+  script.
+    window.onload = function() {
+      const $objs = $('.m-home .obj')
+      const scrollHeight = document.documentElement.scrollTop + window.screen.height - 300
+      $objs.each(function(v, obj) {
+        if ($objs.eq(v).offset().top <= scrollHeight) {
+          $objs.eq(v).addClass('show')
+        }
+      })
+    }
+block foot
+  script(src='./lib/js/eventBus.js')
+  script(src='./dist/js/index.js')

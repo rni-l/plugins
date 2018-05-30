@@ -1,0 +1,28 @@
+//- 欢迎页头部
+div(class=`u-header ${welcomeHeader ? 'u-header_welcome' : 'u-header_normal'}`)
+  div(class=`icon-rectangle iconfont u-header_aside ${welcomeHeader ? 'welcome' : 'normal'}`)
+  if !welcomeHeader
+    a(class='u-header_logo' href=`${public.link_home}`)
+      img(src='./img/icon/logo-golden.png')
+  .u-header_right
+    div(class='u-header_cart')
+      div(class=`icon-cart-black iconfont u-header_cart_icon ${welcomeHeader ? 'welcome' : 'normal'}`)
+      .u-header_cart_line
+      .u-header_cart_num 1
+      //- 购物车下拉框
+      div(class='u-header_cartBox hide')
+        .top_bg
+        .top #{public.shoppingCart.title}
+        .center
+          .product-list(
+            link_detail=`${public.link_detail}`
+            quantityTxt=`${public.shoppingCart.quantityTxt}`
+            priceTxt=`${public.shoppingCart.priceTxt}`
+            )
+        .bottom
+          div(class='priceBox f-flexJCB')
+            span #{public.shoppingCart.totalTxt}
+            .price ￥0
+          div(class='btn u-btn' link=`${public.link_cart}`) #{public.shoppingCart.btnTxt}
+    //- 切换语言按钮
+    a.u-header_cart_btn #{public.languageBtn}

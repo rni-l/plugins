@@ -1,0 +1,122 @@
+@import './../variable.scss';
+
+.m-home {
+  background: red;
+  &_wrap {
+    margin: 0 auto;
+    padding: 20px 0;
+    .obj {
+      opacity: 0;
+      transition: all .5s;
+    }
+    .banner {
+      display: block;
+      width: 100%;
+    }
+    .banner-box {
+      position: relative;
+      video {
+        width: 100%;
+      }
+      &:hover {
+        .m-home_btnGroup {
+          opacity: 1;
+        }
+      }
+    }
+    #my-player {
+      width: 100%;
+    }
+    .wrap1 {
+      display: block;
+      img {
+        width: 100%;
+        display: block;
+      }
+      &:nth-child(1) {
+        width: 628px;
+      }
+      &:nth-child(2) {
+        width: 350px;
+      }
+    }
+    .wrap2 {
+      display: block;
+      img {
+        width: 100%;
+        display: block;
+      }
+      &:nth-child(1) {
+        width: 240px;
+      }
+      &:nth-child(2) {
+        width: 738px;
+      }
+    }
+    .title {
+      font-size: 24px;
+      color: #323232;
+      padding: 30px 0 20px;
+      text-align: center;
+      p {
+        padding-bottom: 6px;
+      }
+      img {
+        display: block;
+        margin: 0px auto 0;
+      }
+    }
+  }
+  .show {
+    opacity: 1;
+  }
+  .link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-container {
+    height: 400px;
+    width: 100%;
+    .img {
+      height: 400px;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+  &_btnGroup {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity .4s;
+    a {
+      background: rgba(#000, .9);
+      padding: 0 25px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      border-radius: 6px;
+      color: #fff;
+      &:hover {
+        color: $c-base;
+      }
+    }
+    span {
+      font-size: 16px;
+    }
+    &_icon {
+      color: #fff;
+      cursor: pointer;
+      &:hover {
+        color: $c-base;
+      }
+    }
+  }
+}
