@@ -12,8 +12,6 @@ const pluginName = pkg.pluginName
 const ENV = process.env.NODE_ENV
 const isDevelopment = ENV === 'development'
 
-console.log('isDevelopment:', isDevelopment, ENV)
-
 const defaultPlugin = [
   new HtmlWebpackPlugin({
     title: 'Development',
@@ -21,20 +19,16 @@ const defaultPlugin = [
   })
 ]
 
-const config = {
-  mode: isDevelopment ? 'development' : 'production',
+const entry = isDevelopment ? {
+  app: path.resolve(rootPath, 'src', 'index.js')
+} : {
+    app: path.resolve(rootPath, 'src', `${pluginName}.js`)
+  }
 
-  entry: {
-    app: path.resolve(rootPath, 'src', 'index.js')
-  },
-
-  devServer: {
-    contentBase: './dist',
-    hot: true,
-    inline: true
-  },
-
-  output: {
+const output = isDevelopment ? {
+  filename: 'index.js',
+  path: path.resolve(rootPath, 'dist')
+} : {
     filename: `${pluginName}.js`,
     path: path.resolve(rootPath, 'dist'),
     library: {
@@ -43,7 +37,20 @@ const config = {
       commonjs: pluginName
     },
     libraryTarget: 'umd'
+  }
+
+const config = {
+  mode: isDevelopment ? 'development' : 'production',
+
+  entry,
+
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+    inline: true
   },
+
+  output,
 
   module: {
     rules: [
